@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteBase /
+DirectoryIndex index.html index.cgi index.php .ht
+
+
+RewriteEngine on
+# htmlのリクエストが来たらphpを渡す。
+RewriteRule ^(.*)\.html$ ./$1.php [L]
