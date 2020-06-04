@@ -31,6 +31,16 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 
 <h2>ご注文内容確認</h2>
 <form method="post" id="complete" name="complete" action="complete.php">
+<input class="hidden-input" name="validate_order" value="<?= isset($_POST['validate_order']) ? $_POST['validate_order'] : 0 ?>" />
+<input class="hidden-input" name="delivery_month" value="<?= isset($_POST['delivery_month']) ? $_POST['delivery_month'] : "" ?>" />
+<input class="hidden-input" name="delivery_date" value="<?= isset($_POST['delivery_date']) ? $_POST['delivery_date'] : ''?>" />
+<input class="hidden-input" name="delivery_time_start" value="<?= isset($_POST['delivery_time_start']) ? $_POST['delivery_time_start'] : '' ?>" />
+<input class="hidden-input" name="delivery_time_end" value="<?= isset($_POST['delivery_time_end']) ? $_POST['delivery_time_end'] : '' ?>" />
+<input class="hidden-input" name="name_customer" value="<?= isset($_POST['name_customer']) ? $_POST['name_customer'] : '' ?>" />
+<input class="hidden-input" name="mobile" value="<?= isset($_POST['mobile']) ? $_POST['mobile'] : '' ?>" />
+<input class="hidden-input" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" />
+<input class="hidden-input" name="zip_1" value="<?= isset($_POST['zip_1']) ? $_POST['zip_1'] : '' ?>" />
+<input class="hidden-input" name="address" value="<?= isset($_POST['address']) ? $_POST['address'] : '' ?>" />
 <table class="order_wrap">
 <tr>
 <th class="order_goods">商品名</th>
@@ -38,17 +48,45 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 <th class="order_price">単価</th>
 </tr>
 
-<tr>
-<td><input type="text" placeholder="チキン竜田生姜焼き弁当"></td>
-<td class="order_number"><input class="w30" type="number" min="1">&nbsp;個</td>
-<td class="order_price">630円</td>
-</tr>
 
+<?php 
+$totalNumber = 0;
+$totalPrice = 0;
+?>
+<?php if( isset($_POST['validate_order']) ): $numberRow = $_POST['validate_order']; $indexRow = 1; ?>
+<?php while($numberRow): 
+    $subIndex = "";
+    if( $indexRow != 1 ){
+        $subIndex = $indexRow;
+    }
+    if( !isset( $_POST['name'.$subIndex] )){
+        $indexRow++;
+        continue;
+    }
+    $totalNumber += $_POST['number'.$subIndex];
+    $totalPrice += $_POST['number'.$subIndex] * $_POST['one-price'.$subIndex];
+    ?>
+    <tr>
+        <td>
+            <p><?= $_POST['name'.$subIndex] ?></p>
+            <input class="hidden-input" name="name<?= $subIndex ?>" value="<?= $_POST['name'.$subIndex] ?>" />
+            <input class="hidden-input" name="number<?= $subIndex ?>" value="<?= $_POST['number'.$subIndex] ?>" />
+            <input class="hidden-input" name="one-price<?= $subIndex ?>" value="<?= $_POST['one-price'.$subIndex] ?>" />
+        </td>
+        <td class="order_number"><p><?= $_POST['number'.$subIndex] ?>&nbsp;個</p></td>
+        <td class="order_price"><?= $_POST['number'.$subIndex] * $_POST['one-price'.$subIndex] ?>円</td>
+    </tr>
+    <?php 
+    $numberRow--; 
+    $indexRow++;
+    ?>
+<?php endwhile; ?>
+<?php endif; ?>
 
 <tr>
 <td>合計</td>
-<td class="order_number">個</td>
-<td class="order_price">円</td>
+<td class="order_number"><?= $totalNumber ?>個</td>
+<td class="order_price"><?= $totalPrice ?>円</td>
 </tr>
 
 </table>
@@ -56,33 +94,37 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 <table class="company_wrap">
 <tr>
 <th>お届け日</th>
-<td><input class="w40" type="number" min="1" max="12">&nbsp;月&nbsp;<input class="w40" type="number" min="1" max="31">&nbsp;日</td>
+<td>
+    <?= isset($_POST['delivery_month']) ? $_POST['delivery_month'] : '' ?>&nbsp;月&nbsp;
+    <?= isset($_POST['delivery_date']) ? $_POST['delivery_date'] : '' ?>&nbsp;日</td>
 </tr>
 
 <tr>
 <th>お届け時間</th>
-<td><input class="w80" type="time">&nbsp;～&nbsp;<input type="time" class="w80"></td>
+<td>
+    <?= isset($_POST['delivery_time_start']) ? $_POST['delivery_time_start'] : '' ?>&nbsp;～&nbsp;
+    <?= isset($_POST['delivery_time_end']) ? $_POST['delivery_time_end'] : '' ?></td>
 </tr>
 
 <tr>
 <th>ご担当者名</th>
-<td><input type="text"></td>
+<td><?= isset($_POST['name_customer']) ? $_POST['name_customer'] : '' ?></td>
 </tr>
 
 <tr>
 <th>電話番号</th>
-<td><input type="tel" class="w160"></td>
+<td><?= isset($_POST['mobile']) ? $_POST['mobile'] : '' ?></td>
 </tr>
 
 <tr>
 <th>メールアドレス</th>
-<td><input type="email"></td>
+<td><?= isset($_POST['email']) ? $_POST['email'] : '' ?></td>
 </tr>
 
 <tr>
 <th>お届け先住所</th>
-<td>〒&nbsp;<input class="w80" id="js_zip1" name="zip_1" type="text" placeholder="2702261" maxlength="8"><br><br>
-千葉県&nbsp;<input class="w85" type="text" placeholder="市区町村以降"></td>
+<td>〒&nbsp;<?= isset($_POST['zip_1']) ? $_POST['zip_1'] : '' ?><br><br>
+千葉県&nbsp;<?= isset($_POST['address']) ? $_POST['address'] : '' ?></td>
 </tr>
 
 </table>

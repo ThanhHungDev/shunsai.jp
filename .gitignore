@@ -1,0 +1,12 @@
+
+.vscode/
+
+yarn.lock
+
+package.json
+
+Gulpfile.js
+
+node_modules/
+
+/vendor/

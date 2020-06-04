@@ -18,13 +18,18 @@ print <<< Shunsai_HTML_Header
 	<meta http-equiv="imagetoolbar" content="no" />
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/pc.css">
-	<link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/modal.jquery.css">
 	<link rel="shortcut icon" href="/favicon/favicon.ico">
 	<link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
 	<code><script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script></code>
 	
 	<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-	<script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/modal.jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/js/validate.form.js"></script>
 	<script src="/js/drawr.js"></script>
 	<script src="/js/pagetop.js"></script>
 	<script src="/js/tel.js"></script>
@@ -32,16 +37,18 @@ print <<< Shunsai_HTML_Header
 
 <script type="text/javascript">
 $(function() {
-	$('#nav span').css({ 
-		width: $('#nav .current').outerWidth(),
-		left: $('#nav .current').position().left 
-	});
-	$('#nav a').mouseover(function(){
-		$('#nav span').stop().animate({
-			width: $(this).outerWidth(),
-			left: $(this).position().left}
-		,{ duration: 170, easing: 'linear', }); 
-	});
+	if( $("#nav .current").length ){
+        $('#nav span').css({ 
+            width: $('#nav .current').outerWidth(),
+            left: $('#nav .current').position().left 
+        });
+        $('#nav a').mouseover(function(){
+            $('#nav span').stop().animate({
+                width: $(this).outerWidth(),
+                left: $(this).position().left}
+            ,{ duration: 170, easing: 'linear', }); 
+        });
+    }
 });
 </script>
 

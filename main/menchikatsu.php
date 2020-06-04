@@ -35,7 +35,7 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 <div class="main_wrap_right">
 <h3 class="title_menu">メンチカツ生姜焼き弁当</h3>
 <p class="comment">食べ応えのある大ぶりのかつと特製醤油たれに付け込んだ「鮮魚の照焼き」はボリュームたっぷり大満足の逸品です。 ※写真は炊き込みご飯です。</p>
-<p class="price menu_price main_price">630円（税込）</p>
+<p class="price menu_price main_price">730円（税込）</p>
 
 <div class="main_tel">
 <span data-action="call" data-tel="047-894-5066"><img src="../img/order_tel.png" alt="047-894-5066"></span>
