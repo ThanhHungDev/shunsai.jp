@@ -30,6 +30,7 @@ print <<< Shunsai_HTML_Header
     <script type="text/javascript" src="/js/modal.jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/js/validate.form.js"></script>
+    <script type="text/javascript" src="/js/jquery.jpostal.js"></script>
 	<script src="/js/drawr.js"></script>
 	<script src="/js/pagetop.js"></script>
 	<script src="/js/tel.js"></script>

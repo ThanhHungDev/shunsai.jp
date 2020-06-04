@@ -49,6 +49,15 @@ $(function($) {
 			$("#validate_order").focus()
 			$("#validate_order").blur()
 		})
+
+		$('#js_zip1').jpostal({
+			postcode : [
+			  '#js_zip1',
+			],
+			address : {
+			  '#js_address'  : '%3 %4 %5'
+			}
+		});	
 	});
 
 	bindTotalOrder()

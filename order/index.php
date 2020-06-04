@@ -119,7 +119,7 @@ Shunsai_HTML_Header($title, $meta_description, $meta_keywords);
                         <td>〒&nbsp;
                             <input class="w80" id="js_zip1" name="zip_1" type="text" placeholder="2702261" maxlength="8"><br><br>
                             千葉県&nbsp;
-                            <input class="w85" type="text" name="address" placeholder="市区町村以降"></td>
+                            <input class="w85" id="js_address" type="text" name="address" placeholder="市区町村以降"></td>
                     </tr>
 
                 </table>
