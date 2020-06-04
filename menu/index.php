@@ -98,22 +98,22 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 <ul>
 <li><a href="../main/index.html"><img src="../img/tsuya.png" alt="メニュー"></a>
 <h3 class="menu"><a href="../main/index.html">唐揚げと旬魚のマリネ弁当</a></h3>
-<p class="price menu_price"><a href="../main/index.html">1000~5000円（税込）</a></p>
+<p class="price menu_price"><a href="../main/index.html">630円（税込）</a></p>
 </li>
 <!--
 <li><a href="../main/index.html"><img src="../img/tsuya.png" alt="メニュー"></a>
 <h3 class="menu"><a href="../main/index.html">唐揚げと旬魚のマリネ弁当</a></h3>
-<p class="price menu_price"><a href="../main/index.html">1000~5000円（税込）</a></p>
+<p class="price menu_price"><a href="../main/index.html">630円（税込）</a></p>
 </li>
 
 <li><a href="../main/index.html"><img src="../img/tsuya.png" alt="メニュー"></a>
 <h3 class="menu"><a href="../main/index.html">唐揚げと旬魚のマリネ弁当</a></h3>
-<p class="price menu_price"><a href="../main/index.html">1000~5000円（税込）</a></p>
+<p class="price menu_price"><a href="../main/index.html">630円（税込）</a></p>
 </li>
 
 <li><a href="../main/index.html"><img src="../img/tsuya.png" alt="メニュー"></a>
 <h3 class="menu"><a href="../main/index.html">唐揚げと旬魚のマリネ弁当</a></h3>
-<p class="price menu_price"><a href="../main/index.html">1000~5000円（税込）</a></p>
+<p class="price menu_price"><a href="../main/index.html">630円（税込）</a></p>
 </li>
 -->
 </ul>

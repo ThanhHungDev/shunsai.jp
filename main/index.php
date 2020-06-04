@@ -3,6 +3,7 @@
 //require_once("include/footer.php");
 require_once $_SERVER['DOCUMENT_ROOT']."/include/header.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/include/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/helper/db.php";
 /* <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> */
 ?>
 
@@ -12,7 +13,10 @@ $meta_description="旬彩は千葉の宅配弁当、ロケ弁、研修用、会�
 $meta_keywords="旬彩,千葉の宅配弁当,ロケ弁,研修用,会議用,オードブル,仕出し弁当,デリバリー";
 Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 ?>
-
+<?php 
+    $slug = basename(__FILE__, ".php");
+    $food = food($slug )
+?>
 <body>
 	<!--header start-->
 <div class="header">
@@ -49,6 +53,9 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 <h2>メールで注文する</h2>
 <br>
 <form method="post" id="order" name="order" action="/order/index.php">
+<input type="hidden" name="name" value="<?= $food["name"] ?>">
+<input type="hidden" name="slug" value="<?= $food["slug"] ?>">
+<input type="hidden" name="price" value="<?= $food["price"] ?>">
 <p>数量&nbsp;<input class="w30" type="number" min="1"><input class="p30" type="submit" value="ご注文ページへ"/></p>
 </form>
 <br>

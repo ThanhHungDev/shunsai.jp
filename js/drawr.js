@@ -127,7 +127,8 @@ function bindTotalOrder(){
 			bindPrice.text(total_order_price + "円")
 		}
 	}
-	document.getElementById("validate_order").value = $("#js-form-order .js-order").length
+	if(document.getElementById("validate_order"))
+		document.getElementById("validate_order").value = $("#js-form-order .js-order").length
 }
 
 function removeRowOrder(ele){

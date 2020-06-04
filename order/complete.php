@@ -19,6 +19,7 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 
 $success = false;
 if( !empty($_POST) ){
+
 	$_config['email']['smtp']['host'] = 'mp-co.sakura.ne.jp';
 	$_config['email']['smtp']['port'] = '587';
 	$_config['email']['username'] = 'test@management-partners.co.jp';
