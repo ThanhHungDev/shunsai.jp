@@ -41,7 +41,14 @@ if (!empty($post)) :
     $bodyContent .= "<b>電話番号</b> " . $post['mobile'] ."<br/> " ;
     $bodyContent .= "<b>メールアドレス：</b> " . $post['email'] ."<br/> " ;
     $bodyContent .= "<b>お届け先住所：</b> 〒&nbsp;" .  $post['zip_1'] ." 千葉県&nbsp;" ;
-    $bodyContent .= $post['address'] ."<br/> " ;
+    $bodyContent .= $post['address'] ."<br/></br /> <br/>" ;
+
+    if( isset($footer) && isset($mobile) ){
+        $bodyContent .= $footer . " <br/> " . $mobile ;
+    }
+    
+
+    
 
 endif;
 

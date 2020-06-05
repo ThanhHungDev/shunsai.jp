@@ -41,7 +41,12 @@ if( !empty($confirmData) ){
 	->setSubject('【旬菜】ご注文ありがとうございます。')
 	->setView( $_SERVER['DOCUMENT_ROOT'].'/helper/mail.template.order.php')
 	->setCC(['pg@management-partners.co.jp'])
-	->setData(array( "post" => $confirmData, 'title' => "以下の内容でご注文を承りました。" ))
+	->setData(array( 
+		"post" => $confirmData, 
+		'title' => "以下の内容でご注文を承りました。",
+		"footer" => "注文の変更やキャンセルはお電話にてお願いいたします。",
+		"mobile" =>  "047-894-5066"
+	))
 	->create();
 
 	try {
