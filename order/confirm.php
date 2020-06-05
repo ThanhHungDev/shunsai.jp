@@ -3,6 +3,7 @@
 //require_once("include/footer.php");
 require_once $_SERVER['DOCUMENT_ROOT']."/include/header.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/include/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/helper/session.php";
 /* <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> */
 ?>
 
@@ -19,6 +20,9 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
     
 	<?php
     Shunsai_Header();
+
+    Session::set("DATA_CONFIRM", $_POST);
+
     ?>
           
 </div><!-- header end -->
@@ -45,7 +49,7 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 <tr>
 <th class="order_goods">商品名</th>
 <th class="order_number">個数</th>
-<th class="order_price">単価</th>
+<th class="order_price">金額</th>
 </tr>
 
 
@@ -74,7 +78,7 @@ $totalPrice = 0;
             <input class="hidden-input" name="one-price<?= $subIndex ?>" value="<?= $_POST['one-price'.$subIndex] ?>" />
         </td>
         <td class="order_number"><p><?= $_POST['number'.$subIndex] ?>&nbsp;個</p></td>
-        <td class="order_price"><?= $_POST['number'.$subIndex] * $_POST['one-price'.$subIndex] ?>円</td>
+        <td class="order_price"><?= number_format($_POST['number'.$subIndex] * $_POST['one-price'.$subIndex]) ?>円</td>
     </tr>
     <?php 
     $numberRow--; 
@@ -85,8 +89,8 @@ $totalPrice = 0;
 
 <tr>
 <td>合計</td>
-<td class="order_number"><?= $totalNumber ?>個</td>
-<td class="order_price"><?= $totalPrice ?>円</td>
+<td class="order_number"><?= number_format($totalNumber) ?>個</td>
+<td class="order_price"><?= number_format($totalPrice) ?>円</td>
 </tr>
 
 </table>
@@ -131,7 +135,12 @@ $totalPrice = 0;
 <br>
 <p align="center">ご注文内容を確認し注文確定ボタンを押して下さい。</p>
 <br>
-<p class="btn_link_back"><input type="button" onclick="history.back()" value="注文入力画面に戻る" name="back"/></p>
+<p class="btn_link_back">
+<a href="/order/index.php">
+    <input type="button" value="注文入力画面に戻る" name="back"/>
+</a>
+
+</p>
 
 <p class="btn_link"><input type="submit" value="注文確定"/></p>
 </form>

@@ -4,7 +4,7 @@
         <tr class="js-order">
             <td>
             
-                <input class="name" name="name" type="text" placeholder="チキン竜田生姜焼き弁当" value="">
+                <input class="name" readonly name="name" type="text" placeholder="チキン竜田生姜焼き弁当" value="">
                 &nbsp;
                 <input class="w50 remove" name="button" type="button" value="取消" onclick="removeRowOrder(this)">
                 <input class="hidden-input js-order-price" id="js-order-price" name="one-price" />

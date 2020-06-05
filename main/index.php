@@ -56,7 +56,7 @@ Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 <input type="hidden" name="name" value="<?= $food["name"] ?>">
 <input type="hidden" name="slug" value="<?= $food["slug"] ?>">
 <input type="hidden" name="price" value="<?= $food["price"] ?>">
-<p>数量&nbsp;<input class="w30" type="number" min="1"><input class="p30" type="submit" value="ご注文ページへ"/></p>
+<p>数量&nbsp;<input name="number" class="w30" type="number" min="1"><input class="p30" type="submit" value="ご注文ページへ"/></p>
 </form>
 <br>
 <p class="shop_time">平日：9:00～20:00 / 土日祝：9:00～18:30（年中無休）</p>

@@ -8,7 +8,7 @@
 		"unit": "円",
 		"img" : "/img/chikintatsuta.jpg"
     },{
-		"name": "メンチカツ生姜焼き弁当<",
+		"name": "メンチカツ生姜焼き弁当",
 		"slug" : "menchikatsu",
 		"description": "食べ応えのある大ぶりのかつと特製醤油たれに付け込んだ「鮮魚の照焼き」はボリュームたっぷり大満足の逸品です。 ※写真は炊き込みご飯です。",
 		"price": "630",
@@ -20,13 +20,6 @@
 		"description": "食べ応えのある大ぶりのかつと特製醤油たれに付け込んだ「鮮魚の照焼き」はボリュームたっぷり大満足の逸品です。 ※写真は炊き込みご飯です。",
 		"price": "630",
 		"unit": "円",
-		"img" : "/img/sutamina.jpg"
-    },{
-		"name": "メンチカツ生姜焼き弁当 đặc biệt",
-		"slug" : "menchikatsu-supper",
-		"description": "食べ応えのある大ぶりのかつと特製醤油たれに付け込んだ「鮮魚の照焼き」はボリュームたっぷり大満足の逸品です。 ※写真は炊き込みご飯です。",
-		"price": "630",
-		"unit": "円",
 		"img" : "/img/menchikatsu.jpg"
     },{
 		"name": "唐揚げと旬魚のマリネ弁当",
@@ -34,7 +27,7 @@
 		"description": "",
 		"price": "630",
 		"unit": "円",
-		"img" : "/img/sutamina.jpg"
+		"img" : "/img/shogatsu.png"
     },{
 		"name": "唐揚げと旬魚のマリネ弁当",
 		"slug" : "shogatsu",

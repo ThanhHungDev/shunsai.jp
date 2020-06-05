@@ -8,6 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/helper/sendmail.php';
 //require_once("include/footer.php");
 require_once $_SERVER['DOCUMENT_ROOT']."/include/header.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/include/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/helper/session.php";
 /* <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> */
 ?>
 
@@ -18,7 +19,9 @@ $meta_keywords="旬彩,千葉の宅配弁当,ロケ弁,研修用,会議用,オ�
 Shunsai_HTML_Header($title,$meta_description,$meta_keywords);
 
 $success = false;
-if( !empty($_POST) ){
+$confirmData = Session::getFlash("DATA_CONFIRM");
+
+if( !empty($confirmData) ){
 
 	$_config['email']['smtp']['host'] = 'mp-co.sakura.ne.jp';
 	$_config['email']['smtp']['port'] = '587';
@@ -33,12 +36,12 @@ if( !empty($_POST) ){
 	->setSMTPDebug(4)
 	->setFrom("noreply@shunsai.jp")
 	->setFromName("noreply@shunsai.jp")
-	->setTo($_POST['email'])
-	->setToName($_POST['name_customer'])
+	->setTo($confirmData['email'])
+	->setToName($confirmData['name_customer'])
 	->setSubject('【旬菜】ご注文ありがとうございます。')
 	->setView( $_SERVER['DOCUMENT_ROOT'].'/helper/mail.template.order.php')
 	->setCC(['pg@management-partners.co.jp'])
-	->setData(array( "post" => $_POST, 'title' => "以下の内容でご注文を承りました。" ))
+	->setData(array( "post" => $confirmData, 'title' => "以下の内容でご注文を承りました。" ))
 	->create();
 
 	try {
@@ -53,11 +56,11 @@ if( !empty($_POST) ){
 	->setFrom("noreply@shunsai.jp")
 	->setFromName("noreply@shunsai.jp")
 	->setTo("master@management-partners.co.jp")
-	->setToName($_POST['name_customer'])
+	->setToName($confirmData['name_customer'])
 	->setSubject('【旬菜】注文がありました。')
 	->setView( $_SERVER['DOCUMENT_ROOT'].'/helper/mail.template.order.php')
 	->setCC(['pg@management-partners.co.jp'])
-	->setData(array( "post" => $_POST, 'title' => "注文がありました。" ))
+	->setData(array( "post" => $confirmData, 'title' => "注文がありました。" ))
 	->create();
 
 	try {

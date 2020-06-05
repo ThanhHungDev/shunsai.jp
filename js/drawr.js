@@ -55,9 +55,30 @@ $(function($) {
 			  '#js_zip1',
 			],
 			address : {
-			  '#js_address'  : '%3 %4 %5'
+				  '#addressGET'  : '%4 %5',
+				  '#addressTown' : "%3"
+			},
+			trigger : {
+				'#addressTown'  : true
 			}
-		});	
+			
+		});
+		$("#addressTown").on("change", function() {
+			var val = $("#addressTown").val();
+			console.log(val, val.indexOf("千葉県"))
+			if( val.indexOf("千葉県") >= 0 )
+				$("#js_address").val($("#addressGET").val())
+			else 
+				$("#js_address").val('')
+		});
+		$("#addressGET").on("change", function() {
+			var val = $("#addressTown").val();
+			console.log(val)
+			if( val.indexOf("千葉県") >= 0  )
+				$("#js_address").val($("#addressGET").val())
+			else 
+				$("#js_address").val('')
+		});
 	});
 
 	bindTotalOrder()
@@ -89,7 +110,7 @@ function updateOrder(name, price, inputIndex){
 			$(input).val(1)
 		}
 		$(exampleOrderRow).find(".order_price").attr('data-price', price)
-		$(exampleOrderRow).find(".order_price").text(price + '円')
+		$(exampleOrderRow).find(".order_price").text(formatMoney(price) + '円')
 		$(exampleOrderRow).find(".js-order-price").val(price)
 		
 	}
@@ -100,7 +121,7 @@ function changeOrderRow(e){
 	var order_price = $( e ).closest( 'tr' ).find(".order_price")
 	if( order_price.length ){
 		var totalRePrice = $(order_price[0]).attr('data-price')
-		$(order_price[0]).text( parseInt(number) * parseInt(totalRePrice) + '円' )
+		$(order_price[0]).text( formatMoney(parseInt(number) * parseInt(totalRePrice)) + '円' )
 	}
 	bindTotalOrder()
 }
@@ -133,7 +154,7 @@ function bindTotalOrder(){
 			bindNumber.text(total_order_number + "個")
 		}
 		if( total_order_price ){
-			bindPrice.text(total_order_price + "円")
+			bindPrice.text(formatMoney(total_order_price) + "円")
 		}
 	}
 	if(document.getElementById("validate_order"))
@@ -144,4 +165,16 @@ function removeRowOrder(ele){
 	
 	$( ele ).closest('tr').remove()
 	bindTotalOrder()
+}
+
+function formatMoney( number ){
+	number += '';
+    var x = number.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
 }
